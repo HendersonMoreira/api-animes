@@ -17,7 +17,14 @@ const animes = [
 
 // Rota raiz
 app.get('/', (req, res) => {
-  res.json({ message: 'API de Animes funcionando!' });
+  res.json({
+    message: 'API de Animes funcionando!',
+    animes: animes,
+    rotas_disponiveis: {
+      todos_animes: '/api/animes',
+      anime_por_id: '/api/animes/1'
+    }
+  });
 });
 
 // Rota para listar todos os animes
