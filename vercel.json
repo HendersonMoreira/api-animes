@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/animes", "dest": "/api/animes.js" },
+    { "src": "/api/animes/(.*)", "dest": "/api/animes.js?id=$1" }
+  ]
+}
