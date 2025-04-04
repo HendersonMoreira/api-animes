@@ -9,7 +9,18 @@ const animes = [
   {
     id: 1,
     titulo: "Cyberpunk: Edgerunners",
-    episodios: 10,
+    episodios: [
+        {
+        numero: 1,
+        titulo: "sei la",
+        videoUrl: "https://exemplo.com/video/ep1"
+        },
+        {
+        numero: 2,
+        titulo: "meu deus",
+        videoUrl: "https://exemplo.com/video/ep1"
+        }
+    ],
     categoria: "ação",
     videoUrl: "https://www.youtube.com/watch?v=_AB8wI2fyos&list=PLpu1dwehr9uDT0uBGO79bIUPNyjyD7bPG"
   }
