@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/animes.js",
+      "src": "animes.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/animes.js"
+      "dest": "animes.js"
     }
   ]
 }
