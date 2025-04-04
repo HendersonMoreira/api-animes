@@ -9,20 +9,18 @@ export default function handler(req, res) {
       }
     ];
   
-    if (req.method === 'GET') {
-      const { id } = req.query;
-  
-      if (id) {
-        const anime = animes.find(a => a.id === parseInt(id));
+    if (req.method === "GET") {
+      if (req.query.id) {
+        const anime = animes.find(a => a.id === parseInt(req.query.id));
         if (anime) {
-          res.status(200).json(anime);
+          return res.status(200).json(anime);
         } else {
-          res.status(404).json({ message: 'Anime não encontrado' });
+          return res.status(404).json({ message: "Anime não encontrado" });
         }
-      } else {
-        res.status(200).json(animes);
       }
-    } else {
-      res.status(405).json({ message: 'Método não permitido' });
+      return res.status(200).json(animes);
     }
+  
+    res.status(405).json({ message: "Método não permitido" });
   }
+  
