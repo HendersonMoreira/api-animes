@@ -15,6 +15,12 @@ const animes = [
   }
 ];
 
+// Rota raiz
+app.get('/', (req, res) => {
+  res.json({ message: 'API de Animes funcionando!' });
+});
+
+// Rota para listar todos os animes
 app.get('/api/animes', (req, res) => {
   try {
     if (req.query.id) {
@@ -26,6 +32,21 @@ app.get('/api/animes', (req, res) => {
       }
     }
     return res.status(200).json(animes);
+  } catch (error) {
+    console.error('Error:', error);
+    return res.status(500).json({ message: "Erro interno do servidor" });
+  }
+});
+
+// Rota para buscar anime por ID
+app.get('/api/animes/:id', (req, res) => {
+  try {
+    const anime = animes.find(a => a.id === parseInt(req.params.id));
+    if (anime) {
+      return res.status(200).json(anime);
+    } else {
+      return res.status(404).json({ message: "Anime não encontrado" });
+    }
   } catch (error) {
     console.error('Error:', error);
     return res.status(500).json({ message: "Erro interno do servidor" });
@@ -44,4 +65,3 @@ app.use((err, req, res, next) => {
 });
 
 export default app;
-  

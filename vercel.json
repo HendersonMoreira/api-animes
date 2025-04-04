@@ -1,15 +1,12 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "/animes.js",
-      "use": "@vercel/node"
-    }
+    { "src": "api/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/animes.js"
-    }
+    { "src": "/api/animes", "dest": "/api/animes.js" },
+    { "src": "/api/animes/(.*)", "dest": "/api/animes.js" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/api/animes.js" }
   ]
 }
