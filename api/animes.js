@@ -12,17 +12,16 @@ const animes = [
     episodios: [
         {
         numero: 1,
-        titulo: "sei la",
-        videoUrl: "https://exemplo.com/video/ep1"
+        titulo: "Cyberpunk: Edgerunners",
+        videoUrl: "https://1024terabox.com/s/1iBxxe_Bz5vqd3-xoJpdOqg"
         },
         {
         numero: 2,
-        titulo: "meu deus",
-        videoUrl: "https://exemplo.com/video/ep1"
+        titulo: "Cyberpunk: Edgerunners eps 2",
+        videoUrl: "https://1024terabox.com/s/1Q9vmXXBplPmHS57_mQR52g"
         }
     ],
     categoria: "ação",
-    videoUrl: "https://www.youtube.com/watch?v=_AB8wI2fyos&list=PLpu1dwehr9uDT0uBGO79bIUPNyjyD7bPG"
   }
 ];
 
@@ -70,6 +69,21 @@ app.get('/api/animes/:id', (req, res) => {
     return res.status(500).json({ message: "Erro interno do servidor" });
   }
 });
+
+// 🆕 Rota para obter os episódios de um anime específico
+app.get('/api/animes/:id/episodios', (req, res) => {
+    try {
+      const anime = animes.find(a => a.id === parseInt(req.params.id));
+      if (!anime) {
+        return res.status(404).json({ message: "Anime não encontrado" });
+      }
+  
+      return res.status(200).json(anime.episodios);
+    } catch (error) {
+      console.error('Erro:', error);
+      return res.status(500).json({ message: "Erro interno do servidor" });
+    }
+  });
 
 // Handle 404
 app.use((req, res) => {
